@@ -14,7 +14,6 @@ import { app, server } from './lib/socket.js'
 dotenv.config()
 
 const __dirname = path.resolve()
-const PORT = process.env.PORT
 
 app.use(
   express.json({
@@ -24,7 +23,7 @@ app.use(
 app.use(cookieParser())
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.CLIENT_URL,
     credentials: true,
   })
 )
@@ -39,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
+server.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`)
   connectDB()
 })
