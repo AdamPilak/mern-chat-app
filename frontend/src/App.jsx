@@ -3,14 +3,14 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
+import SignUpPage from './pages/SignUpPage'
 import SettingsPage from './pages/SettingsPage'
 import ProfilePage from './pages/ProfilePage'
-import Navbar from './components/NavBar'
+import Navbar from './components/Navbar'
 import { useAuthStore } from './store/useAuthStore'
 import { Loader } from 'lucide-react'
 import { Toaster } from 'react-hot-toast'
 import { useThemeStore } from './store/useThemeStore'
-import SignUpPage from './pages/SignupPage'
 
 const App = () => {
   const { user, checkAuth, isCheckingAuth } = useAuthStore()
