@@ -28,9 +28,6 @@ export const getMessages = async (req, res) => {
         { senderId: contactId, receiverId: userId },
       ],
     })
-    //   .sort({ createdAt: 1 })
-    //   .populate('sender', 'fullName profilePic')
-    //   .populate('receiver', 'fullName profilePic')
 
     res.status(200).json(messages)
   } catch (error) {
