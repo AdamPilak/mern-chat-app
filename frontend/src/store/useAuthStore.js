@@ -101,8 +101,6 @@ export const useAuthStore = create((set, get) => ({
     })
 
     useNotificationStore.getState().subscribeToNotifications()
-
-    socket.on()
   },
   disconnectSocket: () => {
     if (get().socket?.connected) {
