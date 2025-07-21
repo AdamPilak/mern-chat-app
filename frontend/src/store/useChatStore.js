@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import toast from 'react-hot-toast'
 import { axiosInstance } from '../lib/axios'
 import { useAuthStore } from './useAuthStore'
+import { useNotificationStore } from './useNotificationStore'
 
 export const useChatStore = create((set, get) => ({
   messages: [],
@@ -41,7 +42,13 @@ export const useChatStore = create((set, get) => ({
         messageData
       )
       set({ messages: [...messages, res.data] })
+
+      await useNotificationStore.getState().sendNotification({
+        type: 'MESSAGE',
+        receiverId: selectedUser._id,
+      })
     } catch (error) {
+      console.log(error)
       toast.error(error.response.data.message)
     }
   },
